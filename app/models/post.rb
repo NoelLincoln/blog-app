@@ -8,7 +8,7 @@ class Post < ApplicationRecord
   private
 
   def update_user_posts_counter
-    user&.update(posts_counter: user.posts.count)
+    author&.update(posts_counter: author.posts.count)
   end
 
   def recent_comments
