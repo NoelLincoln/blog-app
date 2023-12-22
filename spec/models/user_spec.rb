@@ -22,4 +22,21 @@ RSpec.describe User, type: :model do
     user.posts_counter = -1
     expect(user).to_not be_valid
   end
+
+  it 'returns the most recent posts' do
+    # Create 4 posts at different times
+    Timecop.freeze(Time.now - 4.days) { FactoryBot.create(:post, author: user) }
+    Timecop.freeze(Time.now - 3.days) { FactoryBot.create(:post, author: user) }
+    Timecop.freeze(Time.now - 2.days) { FactoryBot.create(:post, author: user) }
+    Timecop.freeze(Time.now - 1.day)  { FactoryBot.create(:post, author: user) }
+
+    # Get the recent posts
+    recent_posts = user.recent_posts
+
+    # Check that it returns 3 posts
+    expect(recent_posts.count).to eq(3)
+
+    # Check that the posts are returned in descending order of creation
+    expect(recent_posts).to eq(recent_posts.sort_by(&:created_at).reverse)
+  end
 end
