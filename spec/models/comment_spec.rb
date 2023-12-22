@@ -17,4 +17,11 @@ RSpec.describe Comment, type: :model do
     comment.post = nil
     expect(comment).to_not be_valid
   end
+
+  it 'updates the comments_counter of the associated post after creation' do
+    post = FactoryBot.create(:post)
+    expect {
+      FactoryBot.create(:comment, post: post)
+    }.to change { post.reload.comments_counter }.by(1)
+  end
 end
