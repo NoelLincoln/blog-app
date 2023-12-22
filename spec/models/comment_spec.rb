@@ -20,8 +20,8 @@ RSpec.describe Comment, type: :model do
 
   it 'updates the comments_counter of the associated post after creation' do
     post = FactoryBot.create(:post)
-    expect {
-      FactoryBot.create(:comment, post: post)
-    }.to change { post.reload.comments_counter }.by(1)
+    expect do
+      FactoryBot.create(:comment, post:)
+    end.to change { post.reload.comments_counter }.by(1)
   end
 end

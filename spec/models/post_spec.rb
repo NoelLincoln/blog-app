@@ -40,12 +40,12 @@ RSpec.describe Post, type: :model do
 
   it 'returns the most recent comments' do
     # Create 6 comments at different times
-    Timecop.freeze(Time.now - 6.days) { FactoryBot.create(:comment, post: post) }
-    Timecop.freeze(Time.now - 5.days) { FactoryBot.create(:comment, post: post) }
-    Timecop.freeze(Time.now - 4.days) { FactoryBot.create(:comment, post: post) }
-    Timecop.freeze(Time.now - 3.days) { FactoryBot.create(:comment, post: post) }
-    Timecop.freeze(Time.now - 2.days) { FactoryBot.create(:comment, post: post) }
-    Timecop.freeze(Time.now - 1.day)  { FactoryBot.create(:comment, post: post) }
+    Timecop.freeze(Time.now - 6.days) { FactoryBot.create(:comment, post:) }
+    Timecop.freeze(Time.now - 5.days) { FactoryBot.create(:comment, post:) }
+    Timecop.freeze(Time.now - 4.days) { FactoryBot.create(:comment, post:) }
+    Timecop.freeze(Time.now - 3.days) { FactoryBot.create(:comment, post:) }
+    Timecop.freeze(Time.now - 2.days) { FactoryBot.create(:comment, post:) }
+    Timecop.freeze(Time.now - 1.day) { FactoryBot.create(:comment, post:) }
 
     # Get the recent comments
     recent_comments = post.recent_comments

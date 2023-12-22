@@ -28,7 +28,7 @@ RSpec.describe User, type: :model do
     Timecop.freeze(Time.now - 4.days) { FactoryBot.create(:post, author: user) }
     Timecop.freeze(Time.now - 3.days) { FactoryBot.create(:post, author: user) }
     Timecop.freeze(Time.now - 2.days) { FactoryBot.create(:post, author: user) }
-    Timecop.freeze(Time.now - 1.day)  { FactoryBot.create(:post, author: user) }
+    Timecop.freeze(Time.now - 1.day) { FactoryBot.create(:post, author: user) }
 
     # Get the recent posts
     recent_posts = user.recent_posts
