@@ -37,4 +37,23 @@ RSpec.describe Post, type: :model do
     post.likes_counter = -1
     expect(post).to_not be_valid
   end
+
+  it 'returns the most recent comments' do
+    # Create 6 comments at different times
+    Timecop.freeze(Time.now - 6.days) { FactoryBot.create(:comment, post: post) }
+    Timecop.freeze(Time.now - 5.days) { FactoryBot.create(:comment, post: post) }
+    Timecop.freeze(Time.now - 4.days) { FactoryBot.create(:comment, post: post) }
+    Timecop.freeze(Time.now - 3.days) { FactoryBot.create(:comment, post: post) }
+    Timecop.freeze(Time.now - 2.days) { FactoryBot.create(:comment, post: post) }
+    Timecop.freeze(Time.now - 1.day)  { FactoryBot.create(:comment, post: post) }
+
+    # Get the recent comments
+    recent_comments = post.recent_comments
+
+    # Check that it returns 5 comments
+    expect(recent_comments.count).to eq(5)
+
+    # Check that the comments are returned in descending order of creation
+    expect(recent_comments).to eq(recent_comments.sort_by(&:created_at).reverse)
+  end
 end
