@@ -17,4 +17,11 @@ RSpec.describe Like, type: :model do
     like.post = nil
     expect(like).to_not be_valid
   end
+
+  it 'updates the likes_counter of the associated post after creation' do
+    post = FactoryBot.create(:post)
+    expect {
+      FactoryBot.create(:like, post: post)
+    }.to change { post.reload.likes_counter }.by(1)
+  end
 end
