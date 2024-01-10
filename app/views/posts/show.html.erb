@@ -1,0 +1,9 @@
+<!-- app/views/users/show.html.erb -->
+<h1><%= @user.name %></h1>
+<p>Number of Posts: <%= @user.posts.count %></p>
+<% @posts.each do |post| %>
+  <div class="card">
+    <h2><%= post.title %></h2>
+    <p><%= post.body %></p>
+  </div>
+<% end %>
