@@ -1,18 +1,1 @@
-<!-- app/views/users/show.html.erb -->
-<h1>User Details</h1>
-
-<div class="card">
-  <%= image_tag(@user.photo, alt: 'User Photo') if @user.photo.present? %>
-  <h2><%= @user.name %></h2>
-  <p><%= @user.bio %></p>
-</div>
-
-<div class="posts">
-  <h2><%= @user.name %>'s Posts</h2>
-  <% @posts.each do |post| %>
-    <div class="post">
-      <h3><%= post.title %></h3>
-      <p><%= post.text %></p>
-    </div>
-  <% end %>
-</div>
+<h1>All users show</h1>

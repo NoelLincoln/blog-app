@@ -1,13 +1,1 @@
-<h1>Post Details</h1>
-
-<div class="post">
-  <h2><%= @post.title %></h2>
-  <p><%= @post.text %></p>
-</div>
-
-<h2>Comments</h2>
-<% @post.comments.each do |comment| %>
-  <div class="comment">
-    <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
-  </div>
-<% end %>
+<h1>All posts show</h1>
