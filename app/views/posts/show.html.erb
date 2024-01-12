@@ -1,1 +1,15 @@
-<h1>All posts show</h1>
+<!-- app/views/posts/show.html.erb -->
+<div class="card">
+  <h1><%= @post.title %></h1>
+  <p><%= @post.text %></p>
+</div>
+
+
+<div class="card comments-section">
+  <h3>Comments</h3>
+  <% @comments.each do |comment| %>
+    <div class="comment">
+      <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+    </div>
+  <% end %>
+</div>

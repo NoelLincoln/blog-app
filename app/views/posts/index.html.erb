@@ -1,1 +1,38 @@
-<h1>All posts</h1>
+<div class="d-flex justify-content-between gap-2 row post-row-mt">
+  <div class="card width-25 col-4">
+    <%= image_tag(@user.photo, alt: 'User Photo') if @user.photo.present? %>
+  </div>
+
+  <div class="card flex-row justify-content-between align-items-baseline gap-2 col-8">
+    <h2><%= @user.name %></h2>
+    <p>Number of posts <%= @user.posts_counter %></p>
+  </div>
+</div>
+
+<% @posts.each do |post| %>
+  <div class="row gap-1 justify-content-center margin-tp-2">
+    <div class="card">
+      <div class="row">
+        <h2><%= link_to post.title, user_post_path(@user, post) %></h2>
+        <p><%= post.text %></p>
+      </div>
+      <div class="row">
+        <p class="d-flex justify-content-end align-items-end">comments: <%= post.comments.count %> likes: 3</p>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Comments</h2>
+      <% post.comments.each do |comment| %>
+        <div class="comment">
+          <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="d-grid row justify-content-center margin-tp-2 margin-btm-2">
+  <div class="text-center">
+    <%= will_paginate @posts %>
+  </div>
+</div>
