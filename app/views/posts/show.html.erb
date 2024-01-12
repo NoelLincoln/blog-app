@@ -1,13 +1,14 @@
 <!-- app/views/posts/show.html.erb -->
 <div class="card">
-  <h1><%= @post.title %></h1>
+  <h4><%= @post.title %> by <%= @post.author.name %></h4>
+  <p class="d-flex justify-content-end align-items-end">comments: <%= @post.comments.count %> likes: <%= @post.likes.count %></p>
   <p><%= @post.text %></p>
 </div>
 
 
 <div class="card comments-section">
   <h3>Comments</h3>
-  <% @comments.each do |comment| %>
+  <% @post.recent_comments.each do |comment| %>
     <div class="comment">
       <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
     </div>

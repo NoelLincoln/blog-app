@@ -1,14 +1,14 @@
 <% @users.each do |user| %>
   <%= link_to user_path(user) do %>
-    <div class="row gap-3 justify-content-center post-row-mt">
-    <div class="card w-25">
-      <%= image_tag(user.photo, alt: 'User Photo') if user.photo.present? %>
-    </div>
-
-    <div class="card flex-row w-50 align-items-baseline gap-2" >
-      <h2><%= user.name %></h2>
-      <p>Number of posts <%= user.posts_counter %></p>
-    </div>
-  </div>
-    <%end %>
+    <div class="row justify-content-around margin-tp-2">
+      <div class="card width-40">
+        <%= image_tag(user.photo, alt: 'User Photo') if user.photo.present? %>
+      </div>
+      <div class="card width-60 align-items-baseline gap-2 card-padding-10">
+        <h2><%= user.name %></h2>
+        <div class="row align-self-stretch">
+          <p class="d-flex justify-content-end align-items-end">Number of posts <%= user.posts.count %></p>
+        </div>
+      </div>
+    </div>  <%end %>
 <% end %>

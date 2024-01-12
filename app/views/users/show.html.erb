@@ -1,17 +1,7 @@
 <!-- app/views/users/show.html.erb -->
 <h1>User Details</h1>
 
-<div class="row justify-content-around">
-  <div class="card width-40">
-    <%= image_tag(@user.photo, alt: 'User Photo') if @user.photo.present? %>
-  </div>
-  <div class="flex-row width-60 align-items-baseline gap-2 card-padding-10">
-    <div class="card card-padding-10">
-      <h2><%= @user.name %></h2>
-      <p class="d-flex justify-content-end ">Number of posts <%= @user.posts.count %></p>
-    </div>
-  </div>
-</div>
+<%= render "partials/user_header" %>
 
 <div class="row">
   <div class="flex-row align-items-baseline gap-2 card-padding-10">
