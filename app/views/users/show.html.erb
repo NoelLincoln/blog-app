@@ -29,7 +29,11 @@
       <div class="card card-padding-10 post-row-mt-10">
         <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
         <p><%= post.text %></p>
+        <div class="row">
+          <p class="d-flex justify-content-end align-items-end">comments: <%= post.comments.count %> likes: <%= post.likes.count %></p>
+        </div>
       </div>
+
     <% end %>
   </div>
 
