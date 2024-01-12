@@ -25,7 +25,7 @@
 <div class="post-row-mt">
   <h2><%= @user.name %>'s Posts</h2>
   <div id="limited-posts">
-    <% @posts.limit(3).each do |post| %>
+    <% @recent_posts.each do |post| %>
       <div class="card card-padding-10 post-row-mt-10">
         <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
         <p><%= post.text %></p>
