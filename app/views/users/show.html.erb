@@ -27,19 +27,12 @@
   <div id="limited-posts">
     <% @posts.limit(3).each do |post| %>
       <div class="card card-padding-10 post-row-mt-10">
-        <h3><%= post.title %></h3>
+        <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
         <p><%= post.text %></p>
       </div>
     <% end %>
   </div>
-  <div id="all-posts" style="display: none;">
-    <% @posts.each do |post| %>
-      <div class="card card-padding-10 post-row-mt-10">
-        <h3><%= post.title %></h3>
-        <p><%= post.text %></p>
-      </div>
-    <% end %>
-  </div>
+
   <div class="d-flex justify-content-center post-row-mt-10 margin-btm">
     <%= link_to 'See all posts', user_posts_path(@user), class: 'btn btn-primary' %>
   </div>
