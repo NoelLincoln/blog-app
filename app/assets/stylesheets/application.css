@@ -70,6 +70,6 @@ a {
 
 .like-icon.liked {
   background: url('red-heart.png') no-repeat center center;
-  color: #B00100;
+  color: #b00100;
   background-size: cover;
 }
