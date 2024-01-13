@@ -1,0 +1,24 @@
+<!-- app/views/posts/new.html.erb -->
+<h1 class="mb-4">New Post</h1>
+
+<%= form_with model: [@user, @post], url: user_posts_path(@user), local: true, method: :post, html: { class: "needs-validation", novalidate: "" } do |form| %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control", required: "" %>
+    <div class="invalid-feedback">
+      Please provide a title.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :text, class: "form-label" %>
+    <%= form.text_area :text, class: "form-control", required: "" %>
+    <div class="invalid-feedback">
+      Please provide text for the post.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Create Post", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,10 +1,17 @@
 <!-- app/views/posts/show.html.erb -->
 <div class="card">
   <h4><%= @post.title %> by <%= @post.author.name %></h4>
-  <p class="d-flex justify-content-end align-items-end">comments: <%= @post.comments.count %> likes: <%= @post.likes.count %></p>
+  <p class="d-flex justify-content-end align-items-end">
+    comments: <%= @post.comments.count %> likes: <%= @post.likes.count %>
+  </p>
   <p><%= @post.text %></p>
+  <div class="d-flex button justify-content-end">
+    <%= render 'partials/likes/new', post: @post %>
+  </div>
+
 </div>
 
+<%= render 'partials/comments/new' %>
 
 <div class="card comments-section">
   <h3>Comments</h3>

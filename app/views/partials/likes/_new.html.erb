@@ -1,0 +1,5 @@
+<%= form_with model: [@user, @post, @post.likes.build], url: user_post_likes_path(@user, @post), method: :post, local: true do |f| %>
+  <div class="like-icon d-inline">
+    <%= f.submit "❤️ Like", class: 'like-button' %>
+  </div>
+<% end %>
