@@ -58,3 +58,18 @@ a {
 .margin-btm {
   margin-bottom: 2rem;
 }
+
+.like-icon {
+  width: 20px;
+  height: 20px;
+  background: url('grey-heart.png') no-repeat center center;
+  color: grey;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.like-icon.liked {
+  background: url('red-heart.png') no-repeat center center;
+  color: #B00100;
+  background-size: cover;
+}
