@@ -1,1 +1,33 @@
-<h1>All users show</h1>
+<!-- app/views/users/show.html.erb -->
+<h1>User Details</h1>
+
+<%= render "partials/user_header" %>
+
+<div class="row">
+  <div class="flex-row align-items-baseline gap-2 card-padding-10">
+    <div class="card card-padding-10">
+      <h2 class="w-40">Bio</h2>
+      <p class="d-flex w-60"><%= @user.bio %></p>
+    </div>
+  </div>
+</div>
+
+<div class="post-row-mt">
+  <h2><%= @user.name %>'s Posts</h2>
+  <div id="limited-posts">
+    <% @recent_posts.each do |post| %>
+      <div class="card card-padding-10 post-row-mt-10">
+        <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
+        <p><%= post.text %></p>
+        <div class="row">
+          <p class="d-flex justify-content-end align-items-end">comments: <%= post.comments.count %> likes: <%= post.likes.count %></p>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center post-row-mt-10 margin-btm">
+    <%= link_to 'See all posts', user_posts_path(@user), class: 'btn btn-primary' %>
+  </div>
+</div>

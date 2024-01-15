@@ -13,3 +13,63 @@
  *= require_tree .
  *= require_self
  */
+
+a {
+  color: #428bca;
+  text-decoration: none;
+}
+
+.post-row-mt {
+  margin-top: 2.5rem;
+}
+
+.post-row-mt-5 {
+  margin-top: 5px;
+}
+
+.post-row-mt-10 {
+  margin-top: 10px;
+}
+
+.margin-tp-2 {
+  margin-top: 2rem;
+}
+
+.margin-btm-2 {
+  margin-bottom: 2rem;
+}
+
+.card-padding-10 {
+  padding: 10px;
+}
+
+.width-25 {
+  width: 25%;
+}
+
+.width-40 {
+  width: 30%;
+}
+
+.width-60 {
+  width: 60%;
+}
+
+.margin-btm {
+  margin-bottom: 2rem;
+}
+
+.like-icon {
+  width: 20px;
+  height: 20px;
+  background: url('grey-heart.png') no-repeat center center;
+  color: grey;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.like-icon.liked {
+  background: url('red-heart.png') no-repeat center center;
+  color: #b00100;
+  background-size: cover;
+}

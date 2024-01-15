@@ -1,0 +1,7 @@
+<%= form_with model: [@post, Comment.new], remote: true, id: 'new_comment_form', url: user_post_comments_path(@user, @post) do |form| %>
+  <div class="form-group">
+    <%= form.label :text, 'Add Comment:' %>
+    <%= form.text_area :text, class: 'form-control', rows: 2 %>
+  </div>
+  <%= form.submit 'Submit', class: 'btn btn-primary' %>
+<% end %>
