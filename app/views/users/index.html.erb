@@ -10,5 +10,10 @@
           <p class="d-flex justify-content-end align-items-end">Number of posts <%= user.posts.count %></p>
         </div>
       </div>
-    </div>  <%end %>
+    </div>
+  <% end %>
+
+  <%= link_to new_user_post_path(user), class: 'btn btn-primary', style: 'margin-top: 10px' do %>
+    Add Post
+  <% end %>
 <% end %>
