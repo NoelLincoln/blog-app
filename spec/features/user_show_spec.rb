@@ -6,7 +6,7 @@ RSpec.describe 'User show page', type: :feature do
 
   before do
     @recent_posts = FactoryBot.create_list(:post, 5, author: user)
-    @user = user # Assign the correct user instance to @user
+    @user = user
     visit user_path(@user)
   end
 
