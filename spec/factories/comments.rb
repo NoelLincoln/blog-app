@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :comment do
-    user
-    post
+    text { 'Great read' }
+    association :user, factory: :user
+    association :post, factory: :post
   end
 end
