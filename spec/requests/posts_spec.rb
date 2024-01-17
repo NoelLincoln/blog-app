@@ -14,7 +14,7 @@ RSpec.describe 'PostsController', type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get "/users/#{user.id}/posts"
-      expect(response.body).to include('All posts')
+      expect(response.body).to include('Number of posts')
     end
   end
 
@@ -25,13 +25,9 @@ RSpec.describe 'PostsController', type: :request do
       expect(response).to have_http_status(:ok)
     end
 
-    # it 'includes correct placeholder text in the response body' do
-    #   get "/users/#{user.id}/posts/#{post.id}"
-    #   expect(response.body).to include('All posts show')
-    # end
     it 'includes correct placeholder text in the response body' do
       get "/users/#{user.id}/posts/#{post.id}"
-      expect(response.body).to include('All posts show') # Adjust this based on your actual content
+      expect(response.body).to include('Add Comment')
     end
   end
 end
