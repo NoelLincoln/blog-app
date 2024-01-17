@@ -4,7 +4,7 @@
   <div class="row gap-1 justify-content-center margin-tp-2">
     <div class="card">
       <div class="row">
-        <h2><%= link_to post.title, user_post_path(@user, post) %></h2>
+        <h2 id="post-title"><%= link_to post.title, user_post_path(@user, post) %></h2>
         <p><%= post.text %></p>
       </div>
       <div class="row">
@@ -23,7 +23,7 @@
 <% end %>
 
 <div class="d-grid row justify-content-center margin-tp-2 margin-btm-2">
-  <div class="text-center">
+  <div class="text-center pagination">
     <%= will_paginate @posts %>
   </div>
 </div>
