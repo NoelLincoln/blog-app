@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe 'PostIndex', type: :feature do
   let(:user) { FactoryBot.create(:user) }
   let(:post) { FactoryBot.create(:post, author: user) }
-  let(:comments) { FactoryBot.create_list(:comment, 3, post: post, text: 'old', user: user, created_at: 4.days.ago) }
+  let(:comments) { FactoryBot.create_list(:comment, 3, post:, text: 'old', user:, created_at: 4.days.ago) }
 
-  let(:recent_comments) { FactoryBot.create_list(:comment, 5, post:, text: 'new', user: user) }
+  let(:recent_comments) { FactoryBot.create_list(:comment, 5, post:, text: 'new', user:) }
 
   before do
     post

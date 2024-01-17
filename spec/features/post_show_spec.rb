@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe 'PostShow', type: :feature do
   let(:user) { FactoryBot.create(:user) }
   let(:post) { FactoryBot.create(:post, author: user) }
-  let(:comments) { FactoryBot.create_list(:comment, 3, post: post, user: user) }
-  let(:likes) { FactoryBot.create_list(:like, 2, post: post, user: user) }
+  let(:comments) { FactoryBot.create_list(:comment, 3, post:, user:) }
+  let(:likes) { FactoryBot.create_list(:like, 2, post:, user:) }
 
   before do
     post
