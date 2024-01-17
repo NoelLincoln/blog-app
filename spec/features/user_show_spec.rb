@@ -34,7 +34,7 @@ RSpec.describe 'User show page', type: :feature do
     it 'displays user three posts' do
       expect(page).to have_css('div#limited-posts', count: 3)
     end
-    
+
     it 'redirects to user posts index page' do
       click_link('See all posts')
       expect(page).to have_current_path(user_posts_path(user))
