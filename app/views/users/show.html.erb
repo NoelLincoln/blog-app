@@ -12,10 +12,10 @@
   </div>
 </div>
 
-<div class="post-row-mt">
+<div class="post-row-mt user-posts-container">
   <h2><%= @user.name %>'s Posts</h2>
     <% @recent_posts.each do |post| %>
-      <div class="card card-padding-10 post-row-mt-10" id="limited-posts">
+      <div class="card card-padding-10 post-row-mt-10">
         <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
         <p><%= post.text %></p>
         <div class="row">
