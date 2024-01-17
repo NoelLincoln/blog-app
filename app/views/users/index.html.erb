@@ -12,8 +12,10 @@
       </div>
     </div>
   <% end %>
+<% end %>
 
-  <%= link_to new_user_post_path(user), class: 'btn btn-primary', style: 'margin-top: 10px' do %>
+<div class="row col-6 mx-auto mt-3">
+  <%= link_to new_user_post_path(@users.first), class: 'btn btn-primary' do %>
     Add Post
   <% end %>
-<% end %>
+</div>
