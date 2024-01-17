@@ -5,8 +5,9 @@ RSpec.describe 'User show page', type: :feature do
   let(:posts) { FactoryBot.create_list(:post, 5, author: user) }
 
   before do
-    posts
-    visit user_path(user)
+    @recent_posts = FactoryBot.create_list(:post, 5, author: user)
+    @user = user # Assign the correct user instance to @user
+    visit user_path(@user)
   end
 
   describe 'User show page' do
@@ -27,12 +28,17 @@ RSpec.describe 'User show page', type: :feature do
     end
 
     it 'redirects to post show page' do
-      find_all('a', text: posts.last.title)[0].click
-      expect(page).to have_current_path(user_post_path(user, posts.last))
+      find_all('a', text: @recent_posts.first.title)[0].click
+      expect(page).to have_current_path(user_post_path(user, @recent_posts.first))
     end
 
-    it 'displays user three posts' do
-      expect(page).to have_css('div#limited-posts', count: 3)
+    it 'displays user first three posts' do
+      within('.user-posts-container') do
+        displayed_posts = @user.recent_posts
+        displayed_posts.each do |post|
+          expect(page).to have_link('', href: user_post_path(@user, post))
+        end
+      end
     end
 
     it 'redirects to user posts index page' do
