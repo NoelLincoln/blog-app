@@ -16,6 +16,7 @@
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Usage](#usage)
+  - [Tests](#tests)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -65,7 +66,8 @@ In order to run this project you need:
 
 - Ruby installed and configured properly. [Guide](https://github.com/microverseinc/curriculum-ruby/blob/main/simple-ruby/articles/ruby_installation_instructions.md)
 - Ruby on rails [Guide](https://guides.rubyonrails.org/)
-### Setup
+
+### Setup <a name="setup"></a>
 
 Clone this repository to your desired folder:
 
@@ -76,7 +78,7 @@ Example commands:
   git clone https://github.com/NoelLincoln/blog-app.git
 ```
 
-### Usage
+### Usage <a name="usage"></a>
 
 In the project folder run the following
 
@@ -90,13 +92,26 @@ To run the program you have to run
 rails server
 ```
 
-### Authors
+### Tests <a name="tests"></a>
+Integration and request specs are written using rspec-rails gem and capybara. To run the specs, navigate to root folder and run:
+
+```
+rspec 
+```
+
+### Authors <a name="authors"></a>
 
 👤 **Noel Bryant**
 
 - GitHub: [@githubhandle](https://github.com/NoelLincoln)
 - Twitter: [@twitterhandle](https://twitter.com/NoelLincoln)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/noel-bryant/)
+
+👤 **Raphael Miyoyo**
+
+- GitHub: [@githubhandle](https://github.com/rmiyoyo)
+- Twitter: [@twitterhandle](https://twitter.com/r_miyoyo)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/raphael-miyoyo/)
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -107,7 +122,7 @@ rails server
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **Add tests**
+- [ ] **Add geolocation**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
