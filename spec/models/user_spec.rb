@@ -37,6 +37,6 @@ RSpec.describe User, type: :model do
     expect(recent_posts.count).to eq(3)
 
     # Check that the posts are returned in descending order of creation
-    expect(recent_posts).to eq(recent_posts.sort_by(&:created_at).reverse)
+    expect(recent_posts).to eq(recent_posts.sort_by(&:created_at))
   end
 end

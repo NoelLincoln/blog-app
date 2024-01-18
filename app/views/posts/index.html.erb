@@ -1,29 +1,31 @@
 <%= render "partials/user_header" %>
 
-<% @posts.each do |post| %>
-  <div class="row gap-1 justify-content-center margin-tp-2">
-    <div class="card">
-      <div class="row">
-        <h2><%= link_to post.title, user_post_path(@user, post) %></h2>
-        <p><%= post.text %></p>
-      </div>
-      <div class="row">
-        <p class="d-flex justify-content-end align-items-end">comments: <%= post.comments.count %> likes: <%= post.likes.count %></p>
-      </div>
-    </div>
-    <div class="card">
-      <h2>Comments</h2>
-      <% post.comments.each do |comment| %>
-        <div class="comment">
-          <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+<div class="comments-index">
+  <% @posts.each do |post| %>
+    <div class="row gap-1 justify-content-center margin-tp-2 title-banner">
+      <div class="card">
+        <div class="row post-link">
+          <h2 class="post-title" id="post-title-<%= post.id %>"><%= link_to post.title, user_post_path(@user, post) %></h2>
+          <p><%= post.text %></p>
         </div>
-      <% end %>
+        <div class="row">
+          <p class="d-flex justify-content-end align-items-end">comments: <%= post.comments.count %> likes: <%= post.likes.count %></p>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Comments</h2>
+        <% post.comments.each do |comment| %>
+          <div class="comment">
+            <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <div class="d-grid row justify-content-center margin-tp-2 margin-btm-2">
-  <div class="text-center">
+  <div class="text-center pagination">
     <%= will_paginate @posts %>
   </div>
 </div>
