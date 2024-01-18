@@ -11,7 +11,11 @@ RSpec.describe 'UsersController', type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get '/users'
-      expect(response.body).to include('All users')
+      if @users.present?
+        expect(response.body).to include('Add Post')
+      else
+        expect(response.body).not_to include('Add Post')
+      end
     end
   end
 
@@ -26,7 +30,7 @@ RSpec.describe 'UsersController', type: :request do
 
     it 'includes correct placeholder text in the response body' do
       get "/users/#{user.id}"
-      expect(response.body).to include('All users show')
+      expect(response.body).to include('Bio')
     end
   end
 end

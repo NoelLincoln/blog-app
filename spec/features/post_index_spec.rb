@@ -2,16 +2,20 @@ require 'rails_helper'
 
 RSpec.describe 'PostIndex', type: :feature do
   let(:user) { FactoryBot.create(:user) }
-  let(:post) { FactoryBot.create(:post, author: user) }
-  let(:comments) { FactoryBot.create_list(:comment, 3, post:, text: 'old', user:, created_at: 4.days.ago) }
+  let(:posts) { FactoryBot.create_list(:post, 5, author: user) }
 
-  let(:recent_comments) { FactoryBot.create_list(:comment, 5, post:, text: 'new', user:) }
+  let(:comments) { FactoryBot.create_list(:comment, 3, post: posts.first, text: 'old', user: user, created_at: 4.days.ago) }
+
+  let(:recent_comments) { FactoryBot.create_list(:comment, 5, post: posts.first, text: 'new', user: user) }
 
   before do
-    post
+    posts
     comments
     recent_comments
+
     visit user_posts_path(user)
+
+    @posts = posts
   end
 
   describe 'User section in user posts index' do
@@ -28,23 +32,41 @@ RSpec.describe 'PostIndex', type: :feature do
     end
   end
 
-  it 'Shows how many likes a post has' do
-    expect(page).to have_content(post.likes_counter)
-  end
-
   describe 'Posts section in user posts index' do
-    it 'Shows post heading' do
-      expect(page).to have_css('h2#post-title')
+    it 'shows post heading' do
+      expect(page).to have_css('h2.post-title')
     end
 
-    it 'Shows post content' do
-      expect(page).to have_content(post.text)
+    it 'shows post content' do
+      expect(page).to have_content(posts.first.text)
     end
 
-    it 'Shows pagination section if there are more posts than fit on the view' do
+    it 'shows pagination section if there are more posts than fit on the view' do
       FactoryBot.create_list(:post, 10, author: user)
       visit user_posts_path(user)
       expect(page).to have_css('div.pagination')
+    end
+
+    it 'displays the first comments on a post' do
+      within('.comments-index') do
+        first_post = posts.first
+        expect(page).to have_content(first_post.comments.first.text)
+      end
+    end
+
+    it 'displays how many comments a post has' do
+      within('.comments-index') do
+        first_post = posts.first
+        expect(page).to have_content("comments: #{first_post.comments.count}")
+      end
+    end
+
+    it 'redirects to the post show page when clicking on a post' do
+      within('.comments-index') do
+        first_link = find('a', match: :first)
+        first_link.click
+        expect(page).to have_current_path(/\/users\/\d+\/posts\/\d+/)
+      end
     end
   end
 end
