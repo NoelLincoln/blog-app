@@ -4,9 +4,11 @@ RSpec.describe 'PostIndex', type: :feature do
   let(:user) { FactoryBot.create(:user) }
   let(:posts) { FactoryBot.create_list(:post, 5, author: user) }
 
-  let(:comments) { FactoryBot.create_list(:comment, 3, post: posts.first, text: 'old', user: user, created_at: 4.days.ago) }
+  let(:comments) do
+    FactoryBot.create_list(:comment, 3, post: posts.first, text: 'old', user:, created_at: 4.days.ago)
+  end
 
-  let(:recent_comments) { FactoryBot.create_list(:comment, 5, post: posts.first, text: 'new', user: user) }
+  let(:recent_comments) { FactoryBot.create_list(:comment, 5, post: posts.first, text: 'new', user:) }
 
   before do
     posts
@@ -65,7 +67,7 @@ RSpec.describe 'PostIndex', type: :feature do
       within('.comments-index') do
         first_link = find('a', match: :first)
         first_link.click
-        expect(page).to have_current_path(/\/users\/\d+\/posts\/\d+/)
+        expect(page).to have_current_path(%r{/users/\d+/posts/\d+})
       end
     end
   end
