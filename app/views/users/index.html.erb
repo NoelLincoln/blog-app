@@ -15,8 +15,8 @@
 <% end %>
 
 <div class="row col-6 mx-auto mt-3">
-  <% if @users.present? %>
-    <%= link_to new_user_post_path(@users.first), class: 'btn btn-primary' do %>
+  <% if user_signed_in? %> <!-- Check if the user is signed in -->
+    <%= link_to new_user_post_path(current_user), class: 'btn btn-primary' do %>
       Add Post
     <% end %>
   <% end %>
