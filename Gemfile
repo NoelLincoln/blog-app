@@ -72,3 +72,5 @@ group :test do
   gem 'timecop'
   gem 'webdrivers'
 end
+
+gem "devise", "~> 4.9"
