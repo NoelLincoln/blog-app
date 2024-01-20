@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @post = @user.posts.includes(:comments).find(params[:id])
     @comments = @post.comments
     @comments_count = @comments.size
+    @user = @post.author
   end
 
   def new
