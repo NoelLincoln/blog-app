@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
       flash[:error] = 'Error: Comment could not be deleted'
     end
 
-    redirect_back_or_default(root_path)
+    redirect_back(fallback_location: root_path)
   end
 
   private
