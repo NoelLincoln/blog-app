@@ -1,5 +1,6 @@
 # app/controllers/posts_controller.rb
 class PostsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_user, only: %i[index show new create]
 
   def index
@@ -30,6 +31,18 @@ class PostsController < ApplicationController
       puts "Errors: #{@post.errors.full_messages}"
       render :new
     end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      flash[:success] = 'Post deleted successfully'
+    else
+      flash[:error] = 'Error: Post could not be deleted'
+    end
+
+    redirect_to user_posts_path(current_user)
   end
 
   private
