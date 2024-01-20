@@ -8,10 +8,10 @@ class CommentsController < ApplicationController
 
     if @comment.save
       flash[:success] = 'Comment saved successfully'
-      redirect_to user_post_path(@post.author, @post)  # Redirect to the post show page
+      redirect_to user_post_path(@post.author, @post) # Redirect to the post show page
     else
       flash[:error] = 'Failed to save comment'
-      redirect_back(fallback_location: root_path)  # Redirect back to the previous page
+      redirect_back(fallback_location: root_path) # Redirect back to the previous page
     end
   end
 
