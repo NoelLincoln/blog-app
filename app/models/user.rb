@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def recent_posts
     posts.order(created_at: :asc).limit(3)
   end
+
+  def generate_token
+    self.token = SecureRandom.base58(30)
+  end
 end
