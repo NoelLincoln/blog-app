@@ -1,5 +1,6 @@
 # app/controllers/comments_controller.rb
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
 
   def create
@@ -13,6 +14,18 @@ class CommentsController < ApplicationController
       flash[:error] = 'Failed to save comment'
       redirect_back(fallback_location: root_path) # Redirect back to the previous page
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+
+    if @comment.destroy
+      flash[:success] = 'Comment deleted successfully'
+    else
+      flash[:error] = 'Error: Comment could not be deleted'
+    end
+
+    redirect_back(fallback_location: root_path)
   end
 
   private

@@ -8,6 +8,8 @@
   <div class="d-flex button justify-content-end">
     <%= render 'partials/likes/new', post: @post %>
   </div>
+  <%= button_to 'Delete Post 📝', user_post_path(@user, @post), method: :delete, class: 'button' if can? :destroy, @post %>
+
 
 </div>
 
@@ -19,5 +21,7 @@
     <div class="comment">
       <p><strong><%= comment.user.name %>:</strong> <%= comment.text %></p>
     </div>
-  <% end %>
+    <%= button_to 'Delete Comment 💬', user_post_comment_path(@user, @post, comment), method: :delete, class: 'button' if can? :destroy, comment %>
+
+<% end %>
 </div>
