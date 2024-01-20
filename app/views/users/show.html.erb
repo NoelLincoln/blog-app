@@ -3,6 +3,14 @@
 
 <%= render "partials/user_header" %>
 
+<% if @user == current_user %>
+  <div class="api-section">
+    <%= button_to "generate token", generate_token_path, class:"button" %>
+    <p>API Token</p>
+    <%= "API_Token: #{@user.token}" %>
+  </div>
+<%end%>
+
 <div class="row">
   <div class="flex-row align-items-baseline gap-2 card-padding-10">
     <div class="card card-padding-10">
