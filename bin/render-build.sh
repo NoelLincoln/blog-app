@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# Run database migrations
+# exit on error
+set -o errexit
+
+bundle install
+bundle exec rails assets:precompile
+bundle exec rails assets:clean
 bundle exec rails db:migrate
 
-# Continue with the default build process
-bundle exec rails assets:precompile
+#if you have seeds to run add:
+# bundle exec rails db:seed
