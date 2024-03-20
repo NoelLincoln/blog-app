@@ -11,13 +11,22 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :posts_counter, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
-  validates :role, inclusion: { in: %w[admin user], message: 'Invalid role' }
-
-  def admin?
-    role == 'admin'
-  end
-
+  
   def recent_posts
     posts.order(created_at: :asc).limit(3)
+  end
+
+  before_validation :set_default_photo, on: :create
+
+  private
+
+  def set_default_photo
+    self.photo ||= generate_gravatar_url(email)
+  end
+
+  def generate_gravatar_url(email, size: 300)
+    # Generate a Gravatar URL based on the user's email
+    gravatar_id = Digest::MD5.hexdigest(email.downcase)
+    "https://www.gravatar.com/avatar/#{gravatar_id}?s=#{size}&d=identicon"
   end
 end

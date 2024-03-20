@@ -30,6 +30,9 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
 
+   <!-- Hidden field for default photo -->
+  <%= f.hidden_field :photo, value: "default_image.png" %>
+
   <div class="row col-10 mx-auto form-group actions post-row-mt-10">
     <%= f.submit "Sign up",class: "btn btn-primary" %>
   </div>
