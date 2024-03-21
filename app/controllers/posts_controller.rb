@@ -1,6 +1,6 @@
 # app/controllers/posts_controller.rb
 class PostsController < ApplicationController
-  load_and_authorize_resource
+  
   before_action :set_user, only: %i[index show new create]
 
   def index
