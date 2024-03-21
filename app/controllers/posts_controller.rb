@@ -1,6 +1,6 @@
 # app/controllers/posts_controller.rb
 class PostsController < ApplicationController
-  
+
   before_action :set_user, only: %i[index show new create]
 
   def index
