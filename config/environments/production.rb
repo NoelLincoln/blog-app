@@ -72,7 +72,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "blog_app_production"
 
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+  config.action_mailer.default_url_options = { :host => 'https://blog-app-lp6b.onrender.com' }
   config.action_mailer.delivery_method = :smtp
 
   ActionMailer::Base.smtp_settings = {
